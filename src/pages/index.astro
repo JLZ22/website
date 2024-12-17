@@ -1,15 +1,29 @@
+---
+import "../styles/styles.css"
+---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link href="./output.css" rel="stylesheet">
 		<title>John Zeng</title>
 	</head>
-	<body>
-		<section id="hero">
-			<h1>John Zeng</h1>
-			<h2>Purdue Computer Science and AI 2026</h2>
+	<body class="bg-slate-950">
+		<section id="hero" class="mx-auto">
+			<div class="text-center">
+				<h1 class="block">John Zeng</h1>
+				<h2 class="text-gray-800 text-lg block">Purdue Computer Science and AI 2026</h2>
+			</div>
+		</section>
+		<section id="about">
+			<div>
+				<h1 class="text-center">About Me</h1>	
+				<p>
+					hai. tryna cook up a website. ...with varying success
+				</p>
+			</div>
 		</section>
 	</body>
 </html>
