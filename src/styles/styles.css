@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+  @apply bg-indigo-400 shadow-lg shadow-indigo-500/90;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+h1 {
+  @apply text-3xl font-bold;
+}
+
+#hero {
+  @apply container max-w-96;
+}
+
+#about {
+  @apply container max-w-xl ms-10 mt-20;
+}
