@@ -1,0 +1,28 @@
+---
+import Icon from "astro-iconify";
+
+interface props {
+  name: string;
+  link: string;
+  description: string;
+  width: number;
+}
+
+const { name, link, width, description } = Astro.props;
+---
+
+<div class="group relative">
+  <a href={link} target="_blank" class="relative">
+    <Icon
+      name={name}
+      width={width}
+      height={width}
+      class="hover:text-theme mb-4 ml-4 mr-4 mt-4 transition-all ease-linear hover:scale-125"
+    />
+    <div
+      class="pointer-events-none absolute left-1/2 top-14 mt-2 inline-block w-max -translate-x-1/2 transform rounded-md bg-slate-900 p-3 text-center text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+    >
+      {description}
+    </div>
+  </a>
+</div>
