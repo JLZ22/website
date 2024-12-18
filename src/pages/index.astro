@@ -1,5 +1,10 @@
 ---
 import IconRef from "../components/IconRef.astro";
+import Project from "../components/Project.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const allProjects = await getCollection("project");
 
 const ICON_WIDTH = 40;
 ---
@@ -13,70 +18,81 @@ const ICON_WIDTH = 40;
     <link href="./output.css" rel="stylesheet" />
     <title>John Zeng</title>
   </head>
-  <body class="bg-slate-950 text-gray-300">
-    <main>
-      <section id="hero">
-        <div>
-          <h1 class="text-3xl font-bold">John Zeng</h1>
-          <h2 class="text-xl">Purdue Computer Science and AI 2026</h2>
-          <div>
-            <a href="#about" class="text-blue-500">About Me</a> |
-            <a href="#projects" class="text-blue-500">Projects</a> |
-            <a href="#rugby" class="text-blue-500">Rugby</a>
-          </div>
-          <div class="flex flex-row">
+  <body
+    class="flex min-h-screen flex-col bg-zinc-900 font-indivisible text-indigo-200"
+  >
+    <main class="ml-5 mt-5 flex-grow">
+      <section id="hero" class="text-center">
+        <div class="p-4">
+          <h1 class="p-4 text-5xl font-bold">John Zeng</h1>
+          <div class="flex flex-row justify-center">
             <IconRef
               name="simple-icons:github"
               link="https://github.com/jlz22"
               width={ICON_WIDTH}
-              description="Github"
             />
             <IconRef
               name="simple-icons:discord"
               link="https://discordapp.com/users/519383092012515338"
               width={ICON_WIDTH}
-              description="Discord"
             />
             <IconRef
               name="simple-icons:readdotcv"
-              link="https://github.com/JLZ22/Resume/blob/main/John_Zeng_Resume.pdf"
+              link="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
               width={ICON_WIDTH}
-              description="Resume"
             />
             <IconRef
               name="simple-icons:mailboxdotorg"
               link="mailto:zeng261@purdue.edu"
               width={ICON_WIDTH}
-              description="Email"
             />
             <IconRef
               name="simple-icons:linkedin"
               link="https://www.linkedin.com/in/John-L-Zeng"
               width={ICON_WIDTH}
-              description="Linked-In"
             />
           </div>
         </div>
       </section>
 
       <section id="about">
-        <div>
-          <h1 class="mt-5 text-2xl underline">About Me:</h1>
-          <p
-            class="w-full rounded-md border border-slate-100 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4"
-          >
-            hai. tryna cook up a website :D
-          </p>
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
+            <h1 class="text-left text-2xl underline">About Me:</h1>
+            <div class="mt-2 rounded-md border border-slate-400 p-4">
+              <p class="text-xl">
+                Hi! I am a Junior studying Computer Science and Artificial
+                Intelligence at Purdue University. I spend most of my time doing
+                research at the Digital Enterprise Center for Industry 4.0
+                technologies, but lately, web dev has sparked my interest. In my
+                free times, I enjoy pc gaming and playing as a prop (and more
+                recently a winger :D) for <a
+                  class="text-blue-500 underline"
+                  href="https://www.instagram.com/purduemensrugby/?hl=en"
+                  target="_blank">Purdue Men's Rugby</a
+                >. I also love lifting weights, and I'm trying to start
+                incorporating running into my regular schedule (my cardio is . .
+                . we'll leave it at that).
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <section id="projects">
-        <h1 class="mt-5 text-2xl underline">Projects</h1>
-      </section>
-
-      <section id="rugby">
-        <h1 class="mt-5 text-2xl underline">Rugby</h1>
+        <section id="projects" class="mt-5">
+          <div class="flex flex-col items-center justify-center">
+            <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
+              <h1 class="text-left text-2xl underline">Projects:</h1>
+              {allProjects.map((project) => <Project project={project} />)}
+            </div>
+          </div>
+        </section>
       </section>
     </main>
+    <footer class="bottom-0 left-0 p-4 text-center">
+      © 2024 John Zeng <a
+        href="https://github.com/JLZ22/website"
+        class="text-blue-500 underline">Source</a
+      >
+    </footer>
   </body>
 </html>
