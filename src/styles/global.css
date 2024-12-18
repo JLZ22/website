@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-family: 'sans-serif';
+    font-size: 1.1rem;
+}
+
+.hyperlink {
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s ease;
+    &:hover {
+        text-decoration: underline;
+        color: #2f97ff;
+    }
+}

@@ -2,7 +2,7 @@
 import IconRef from "../components/IconRef.astro";
 import Project from "../components/Project.astro";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import "../styles/global.css";
 
 const allProjects = await getCollection("project");
 
@@ -19,7 +19,7 @@ const ICON_WIDTH = 40;
     <title>John Zeng</title>
   </head>
   <body
-    class="flex min-h-screen flex-col bg-zinc-900 font-indivisible text-indigo-200"
+    class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200"
   >
     <main class="ml-5 mt-5 flex-grow">
       <section id="hero" class="text-center">
@@ -42,11 +42,6 @@ const ICON_WIDTH = 40;
               width={ICON_WIDTH}
             />
             <IconRef
-              name="simple-icons:mailboxdotorg"
-              link="mailto:zeng261@purdue.edu"
-              width={ICON_WIDTH}
-            />
-            <IconRef
               name="simple-icons:linkedin"
               link="https://www.linkedin.com/in/John-L-Zeng"
               width={ICON_WIDTH}
@@ -58,30 +53,50 @@ const ICON_WIDTH = 40;
       <section id="about">
         <div class="flex flex-col items-center justify-center">
           <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
-            <h1 class="text-left text-2xl underline">About Me:</h1>
-            <div class="mt-2 rounded-md border border-slate-400 p-4">
-              <p class="text-xl">
-                Hi! I am a Junior studying Computer Science and Artificial
-                Intelligence at Purdue University. I spend most of my time doing
+            <h1 class="text-left text-2xl">About Me:</h1>
+            <div class="mt-2 p-4">
+              <p>
+                Hi! I am a Junior at Purdue University studying Computer Science
+                and Artificial Intelligence. I spend most of my time doing
                 research at the Digital Enterprise Center for Industry 4.0
                 technologies, but lately, web dev has sparked my interest. In my
                 free times, I enjoy pc gaming and playing as a prop (and more
                 recently a winger :D) for <a
-                  class="text-blue-500 underline"
+                  class="hyperlink"
                   href="https://www.instagram.com/purduemensrugby/?hl=en"
                   target="_blank">Purdue Men's Rugby</a
-                >. I also love lifting weights, and I'm trying to start
-                incorporating running into my regular schedule (my cardio is . .
-                . we'll leave it at that).
+                >.
+
+                <br />
+                <br />
+                You can contact me at <span class="italic"
+                  >zeng261 [at] purdue [dot] edu</span
+                >.
               </p>
             </div>
           </div>
         </div>
 
+        <section id="research" class="mt-5">
+          <div class="flex flex-col items-center justify-center">
+            <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
+              <h1 class="text-left text-2xl">Research:</h1>
+              <div class="mt-2 p-4">
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae
+                  error quisquam laboriosam sint cumque. Quas nobis, minima ipsa
+                  reiciendis ducimus amet, laudantium, odio iste dolorum dolor
+                  vitae voluptatem in vel!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="projects" class="mt-5">
           <div class="flex flex-col items-center justify-center">
             <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
-              <h1 class="text-left text-2xl underline">Projects:</h1>
+              <h1 class="text-left text-2xl">Projects:</h1>
               {allProjects.map((project) => <Project project={project} />)}
             </div>
           </div>
@@ -91,7 +106,7 @@ const ICON_WIDTH = 40;
     <footer class="bottom-0 left-0 p-4 text-center">
       © 2024 John Zeng <a
         href="https://github.com/JLZ22/website"
-        class="text-blue-500 underline">Source</a
+        class="hyperlink">Source</a
       >
     </footer>
   </body>
