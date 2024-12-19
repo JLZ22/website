@@ -11,24 +11,25 @@ const { project } = Astro.props;
 const title = project.data.title;
 const dateRange = project.data.dateRange;
 const technologies = project.data.technologies;
+const link = project.data.link;
 const { Content } = await render(project);
 ---
 
-<a href="https://github.com/JLZ22/Rugby-Infinite-Passing.git" target="_blank">
+<a href={link} target="_blank">
   <div
     class="mt-4 rounded-md border border-slate-400 p-4 transition-all ease-in-out hover:scale-105 hover:bg-slate-500"
   >
     <div class="flex flex-row justify-between">
       <div>
-        <span class="text-2xl">{title}</span> - <span class="text-2xl italic"
-          >{technologies}</span
-        >
+        <span class="text-2xl">{title}</span>
       </div>
       <span class="text-lg italic">
         {dateRange}
       </span>
     </div>
-
+    <span class="">
+      Technologies: {technologies}
+    </span>
     <br />
 
     <div>
