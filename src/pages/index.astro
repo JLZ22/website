@@ -2,11 +2,32 @@
 import IconRef from "../components/IconRef.astro";
 import Project from "../components/Project.astro";
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import "../styles/global.css";
 
+const ICON_WIDTH = 40;
 const allProjects = await getCollection("project");
 
-const ICON_WIDTH = 40;
+const projectOrder = [
+  "Rugby Infinite Passing", 
+  "Git Tutorial",
+]
+
+allProjects.sort((a, b) => {
+  let aIndex = getIndex(a);
+  let bIndex = getIndex(b);
+
+  if (aIndex === bIndex) {
+    return a.data.title.localeCompare(b.data.title);
+  }
+
+  return aIndex - bIndex;
+});
+
+function getIndex(project: CollectionEntry<"project">) {
+  let ind = projectOrder.indexOf(project.data.title);
+  return ind === -1 ? projectOrder.length : ind;
+}
 ---
 
 <html lang="en">
