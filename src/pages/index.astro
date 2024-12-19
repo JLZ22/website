@@ -8,10 +8,7 @@ import "../styles/global.css";
 const ICON_WIDTH = 40;
 const allProjects = await getCollection("project");
 
-const projectOrder = [
-  "Rugby Infinite Passing", 
-  "Git Tutorial",
-]
+const projectOrder = ["Rugby Infinite Passing", "Git Tutorial"];
 
 allProjects.sort((a, b) => {
   let aIndex = getIndex(a);
@@ -39,9 +36,7 @@ function getIndex(project: CollectionEntry<"project">) {
     <link href="./output.css" rel="stylesheet" />
     <title>John Zeng</title>
   </head>
-  <body
-    class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200"
-  >
+  <body class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200">
     <main class="ml-5 mt-5 flex-grow">
       <section id="hero" class="text-center">
         <div class="p-4">
@@ -94,7 +89,11 @@ function getIndex(project: CollectionEntry<"project">) {
                 <br />
                 You can contact me at <span class="italic"
                   >zeng261 [at] purdue [dot] edu</span
-                >.
+                >. Find my resume <a
+                  href="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
+                  target="_blank"
+                  class="hyperlink">here</a
+                >!
               </p>
             </div>
           </div>
