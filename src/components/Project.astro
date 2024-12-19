@@ -1,35 +1,38 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
+import "../styles/global.css";
 
-interface props {
+interface Props {
   project: CollectionEntry<"project">;
 }
 
-const { project } = Astro.props;
+const { project } = Astro.props as Props;
 const title = project.data.title;
 const dateRange = project.data.dateRange;
+const technologies = project.data.technologies;
+const link = project.data.link;
 const { Content } = await render(project);
 ---
 
-<div class="mt-4 rounded-md border border-slate-400 p-4">
-  <div class="flex flex-row justify-between">
-    <span class="text-2xl">
-      {title}
-    </span>
-    <span class="text-lg italic">
-      {dateRange}
-    </span>
-  </div>
-  <div class="text-blue-500 underline text-lg mt-2">
-    <a
-      href="https://github.com/JLZ22/Rugby-Infinite-Passing.git"
-      target="_blank">GitHub Repository</a
-    >
-  </div>
-  <br/>
+<a href={link} target="_blank">
+  <div
+    class="hover:scale-102 mt-4 rounded-md border border-slate-400 p-4 transition-all ease-in-out hover:bg-slate-700"
+  >
+    <div class="flex flex-row justify-between">
+      <div>
+        <span class="text-2xl">{title}</span>
+      </div>
+      <span class="text-lg italic">
+        {dateRange}
+      </span>
+    </div>
+    <span class="mt-2 italic underline">Technologies:</span>
+    {technologies}
+    <br />
 
-  <div>
-    <Content />
+    <div class="mt-5">
+      <Content />
+    </div>
   </div>
-</div>
+</a>

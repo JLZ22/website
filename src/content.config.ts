@@ -8,6 +8,7 @@ const project = defineCollection({
     title: z.string(),
     dateRange: z.string(),
     link: z.string(),
+    technologies: z.string(),
   }),
 });
 
