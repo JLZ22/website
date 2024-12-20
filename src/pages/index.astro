@@ -8,7 +8,12 @@ import "../styles/global.css";
 const ICON_WIDTH = 40;
 const allProjects = await getCollection("project");
 
-const projectOrder = ["Rugby Infinite Passing", "Git Tutorial"];
+const projectOrder = [
+  "Rugby Infinite Passing",
+  "Git Tutorial",
+  "Pascal Compiler",
+  "Pacman with Gridworld",
+];
 
 allProjects.sort((a, b) => {
   let aIndex = getIndex(a);
@@ -41,7 +46,7 @@ function getIndex(project: CollectionEntry<"project">) {
       <section id="hero" class="text-center">
         <div class="p-4">
           <a href="https://johnzeng.me">
-            <h1 class="p-4 text-5xl font-bold">John Zeng</h1>
+            <h1 class="p-4 text-5xl font-bold hover:underline">John Zeng</h1>
           </a>
           <div class="flex flex-row justify-center">
             <IconRef
@@ -70,7 +75,7 @@ function getIndex(project: CollectionEntry<"project">) {
 
       <section id="about">
         <div class="flex flex-col items-center justify-center">
-          <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
+          <div class="w-full lg:w-3/4 xl:w-7/12">
             <h1 class="text-left text-2xl">About Me:</h1>
             <div class="mt-2 p-4">
               <p>
@@ -87,9 +92,9 @@ function getIndex(project: CollectionEntry<"project">) {
 
                 <br />
                 <br />
-                You can contact me at <span class="italic"
+                Contact me at <span class="italic"
                   >zeng261 [at] purdue [dot] edu</span
-                >. Find my resume <a
+                >. <br /> Find my resume <a
                   href="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
                   target="_blank"
                   class="hyperlink">here</a
@@ -101,8 +106,8 @@ function getIndex(project: CollectionEntry<"project">) {
 
         <section id="projects" class="mt-5">
           <div class="flex flex-col items-center justify-center">
-            <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
-              <h1 class="text-left text-2xl">Projects:</h1>
+            <div class="w-full lg:w-3/4 xl:w-7/12">
+              <h1 class="text-left text-2xl">Side Projects:</h1>
               {allProjects.map((project) => <Project project={project} />)}
             </div>
           </div>
