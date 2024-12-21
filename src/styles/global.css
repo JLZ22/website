@@ -30,12 +30,33 @@ html {
     left: 20%
 }
 
+.left-1\/10 {
+    left: 10%
+}
+
+@media (min-width: 760px) {
+    .md\:left-1\/5 {
+        left: 20%
+    }
+
+}
+
 @media (min-width: 1024px) {
     .lg\:.left-1\/5 {
         left: 20%
     }
 
-    .md\:left-1\/5 {
+    .lg\:left-1\/10 {
+        left: 10%
+    }
+}
+
+@media (min-width: 1280px) {
+    .xl\:left-1\/5 {
         left: 20%
+    }
+
+    .xl\:left-1\/10 {
+        left: 10%
     }
 }
