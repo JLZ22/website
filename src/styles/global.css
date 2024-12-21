@@ -3,60 +3,61 @@
 @tailwind utilities;
 
 html {
-    font-family: futura-pt, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.1rem;
+  font-family: futura-pt, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .hyperlink {
-    color: #0070f3;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.15s ease;
-    &:hover {
-        text-decoration: underline;
-        color: #2f97ff;
-    }
+  color: #0070f3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+  &:hover {
+    text-decoration: underline;
+    color: #2f97ff;
+  }
 }
 
 .hover\:scale-102:hover {
-    --tw-scale-x: 1.02;
-    --tw-scale-y: 1.02;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-scale-x: 1.02;
+  --tw-scale-y: 1.02;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .left-1\/5 {
-    left: 20%
+  left: 20%;
 }
 
 .left-1\/10 {
-    left: 10%
+  left: 10%;
 }
 
 @media (min-width: 760px) {
-    .md\:left-1\/5 {
-        left: 20%
-    }
-
+  .md\:left-1\/5 {
+    left: 20%;
+  }
 }
 
 @media (min-width: 1024px) {
-    .lg\:.left-1\/5 {
-        left: 20%
-    }
+  .lg\:.left-1\/5 {
+    left: 20%;
+  }
 
-    .lg\:left-1\/10 {
-        left: 10%
-    }
+  .lg\:left-1\/10 {
+    left: 10%;
+  }
 }
 
 @media (min-width: 1280px) {
-    .xl\:left-1\/5 {
-        left: 20%
-    }
+  .xl\:left-1\/5 {
+    left: 20%;
+  }
 
-    .xl\:left-1\/10 {
-        left: 10%
-    }
+  .xl\:left-1\/10 {
+    left: 10%;
+  }
 }
