@@ -36,9 +36,17 @@ html {
   left: 10%;
 }
 
+.min-w-160 {
+  min-width: 32 rem;
+}
+
 @media (min-width: 760px) {
   .md\:left-1\/5 {
     left: 20%;
+  }
+
+  .md\:left-1\/10 {
+    left: 10%;
   }
 }
 
@@ -50,6 +58,10 @@ html {
   .lg\:left-1\/10 {
     left: 10%;
   }
+
+  .lg\:w-168 {
+    width: 42rem;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -59,5 +71,33 @@ html {
 
   .xl\:left-1\/10 {
     left: 10%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .xxl\:left-1\/4 {
+    left: 25%;
+  }
+  .xxl\:left-1\/5 {
+    left: 20%;
+  }
+
+  .xxl\:left-1\/10 {
+    left: 10%;
+  }
+
+  .xxl\:w-1\/2 {
+    width: 50%;
+  }
+
+  .xxl\:w-3\/4 {
+    width: 67%;
+  }
+
+  .xxl\:translate-x-0 {
+    --tw-translate-x: -45%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+      rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }

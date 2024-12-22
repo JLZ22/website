@@ -1,11 +1,6 @@
 ---
-import IconRef from "../components/IconRef.astro";
-
-const sections = [
-  { title: "About", href: "/" },
-  { title: "Research", href: "/research" },
-  { title: "Projects", href: "/projects" },
-];
+import NavMenu from "../components/NavMenu.astro";
+import Hamburger from "../components/Hamburger.astro";
 
 interface Props {
   title: string;
@@ -13,7 +8,6 @@ interface Props {
 }
 
 const { title, section } = Astro.props;
-const ICON_WIDTH = 40;
 ---
 
 <html lang="en">
@@ -25,81 +19,42 @@ const ICON_WIDTH = 40;
     <link href="./output.css" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200">
-    <main class="mt-14 flex-grow">
-      <div
-        class="lg:left-1/10 xl:left-1/5 absolute left-1/2 -translate-x-1/2 items-center text-center lg:translate-x-0"
-      >
-        <div class="text-4xl hover:underline">
-          <a href="/">John Zeng</a>
-        </div>
-      </div>
+  <body class="bg-zinc-900 text-indigo-200">
+    <div class="absolute right-0 mr-7 mt-7 block focus:outline-none lg:hidden">
+      <Hamburger />
+    </div>
 
-      <!-- Hamburger Menu -->
-      <button
-        class="absolute right-0 mr-7 mt-3 block focus:outline-none lg:hidden"
-        id="menu-button"
-        aria-expanded="false"
-        aria-controls="menu"
-      >
-        <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
-        <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
-        <span class="block h-1 w-6 bg-indigo-200"></span>
-      </button>
-      <!-- Nav Links -->
+    <div
+      class="xxl:w-3/4 xxl:translate-x-0 absolute left-1/2 top-10 flex w-4/5 -translate-x-1/2 p-4 transition-all duration-100 ease-in"
+    >
       <div
-        class="lg:left-1/10 xl:left-1/5 absolute mr-5 mt-10 hidden items-center text-center transition-all duration-100 ease-in lg:block"
+        class="relative left-1/2 ml-5 -translate-x-1/2 transition-all duration-100 ease-in lg:left-0"
       >
-        <nav class="mt-10 grid grid-rows-3 gap-4 text-left text-sm">
-          {
-            sections.map(({ title, href }) => {
-              let cssClass =
-                section === title ? "underline" : "hover:underline";
-              return (
-                <a href={href} class={cssClass}>
-                  {title}
-                </a>
-              );
-            })
-          }
-        </nav>
-
-        <div class="mt-10">
-          <div class="mb-5 flex flex-row">
-            <IconRef
-              name="simple-icons:github"
-              link="https://github.com/jlz22"
-              width={ICON_WIDTH}
-              class="mr-5"
-            />
-            <IconRef
-              name="simple-icons:discord"
-              link="https://discordapp.com/users/519383092012515338"
-              width={ICON_WIDTH}
-            />
-          </div>
-          <div class="flex flex-row">
-            <IconRef
-              name="simple-icons:readdotcv"
-              link="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
-              width={ICON_WIDTH}
-              class="mr-5"
-            />
-            <IconRef
-              name="simple-icons:linkedin"
-              link="https://www.linkedin.com/in/John-L-Zeng"
-              width={ICON_WIDTH}
-            />
+        <div class="min-w-44 text-center lg:text-left">
+          <div class="text-4xl hover:underline">
+            <a href="/">John Zeng</a>
           </div>
         </div>
-      </div>
-    </main>
 
-    <footer class="bottom-0 left-0 p-4 text-center">
-      © 2024 John Zeng <a
-        href="https://github.com/JLZ22/website"
-        class="hyperlink">Source</a
-      >
+        <NavMenu section={section} />
+      </div>
+
+      <main>
+        <div
+          class="relative top-24 max-w-3xl -translate-x-1/4 transition-all duration-100 ease-in lg:top-0 lg:-translate-x-0"
+        >
+          <slot />
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <div class="fixed bottom-0 left-1/2 -translate-x-1/2 p-4 text-center">
+        © 2024 John Zeng <a
+          href="https://github.com/JLZ22/website"
+          class="hyperlink">Source</a
+        >
+      </div>
     </footer>
   </body>
 </html>

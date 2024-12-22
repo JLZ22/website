@@ -1,0 +1,61 @@
+---
+import IconRef from "../components/IconRef.astro";
+
+const sections = [
+  { title: "About", href: "/" },
+  { title: "Research", href: "/research" },
+  { title: "Projects", href: "/projects" },
+];
+
+interface Props {
+  section: string;
+}
+
+const { section } = Astro.props;
+const ICON_WIDTH = 40;
+---
+
+<!-- Nav Links -->
+<div class="mr-5 mt-10 hidden lg:block">
+  <nav class="mt-10 grid grid-rows-3 gap-4 text-left text-sm">
+    {
+      sections.map(({ title, href }) => {
+        let cssClass = section === title ? "underline" : "hover:underline";
+        return (
+          <a href={href} class={cssClass}>
+            {title}
+          </a>
+        );
+      })
+    }
+  </nav>
+
+  <div class="mt-10">
+    <div class="mb-5 flex flex-row">
+      <IconRef
+        name="simple-icons:github"
+        link="https://github.com/jlz22"
+        width={ICON_WIDTH}
+        class="mr-5"
+      />
+      <IconRef
+        name="simple-icons:discord"
+        link="https://discordapp.com/users/519383092012515338"
+        width={ICON_WIDTH}
+      />
+    </div>
+    <div class="flex flex-row">
+      <IconRef
+        name="simple-icons:readdotcv"
+        link="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
+        width={ICON_WIDTH}
+        class="mr-5"
+      />
+      <IconRef
+        name="simple-icons:linkedin"
+        link="https://www.linkedin.com/in/John-L-Zeng"
+        width={ICON_WIDTH}
+      />
+    </div>
+  </div>
+</div>
