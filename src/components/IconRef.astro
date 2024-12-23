@@ -5,13 +5,12 @@ interface props {
   name: string;
   link: string;
   width: number;
-  class: string;
 }
 
-const { name, link, width, class: inputClasses } = Astro.props as props;
+const { name, link, width } = Astro.props as props;
 ---
 
-  <a href={link} target="_blank" class={inputClasses}>
+  <a href={link} target="_blank">
     <Icon
       name={name}
       width={width}
