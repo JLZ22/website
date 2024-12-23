@@ -38,7 +38,7 @@ const { title, section } = Astro.props;
 
          <div class="mt-10 w-full xl:w-2/3">
            <div class="flex flex-grow flex-col justify-center md:flex-row">
-             <div class="min-w-fit">
+             <div class="min-w-fit ml-4">
                <div class="text-center text-4xl hover:underline">
                  <a href="/">John Zeng</a>
                </div>
@@ -46,7 +46,7 @@ const { title, section } = Astro.props;
                  <NavMenu section={section} />
                </div>
              </div>
-             <div class="w-full">
+             <div class="w-full md:ml-10">
                <slot />
              </div>
            </div>
