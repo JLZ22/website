@@ -101,3 +101,22 @@ html {
       scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
+
+.fade-out {
+  position: fixed; /* Make it cover the entire screen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  animation: fadeOut 1s linear forwards; /* Adjust time as needed */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
