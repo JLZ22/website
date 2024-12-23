@@ -22,7 +22,7 @@ const isLeft = side === "left";
 
   <div
     id="side-menu"
-    class={`h-screen w-36  flex-col ${isLeft ? "justify-end" : "justify-start"} z-30 bg-zinc-950 opacity-85 transition-transform duration-1000 ease-in-out`}
+    class={`h-screen w-36 flex-col ${isLeft ? "justify-end" : "justify-start"} z-30 bg-zinc-950 opacity-85 transition-transform duration-1000 ease-in-out`}
     hidden
   >
     <!-- Close Button -->
@@ -32,7 +32,7 @@ const isLeft = side === "left";
     >
       <button
         id="close-button"
-        class="ml-2 mr-2 mt-7 flex w-fit items-center justify-center hover:scale-125"
+        class="ml-2 mr-2 mt-7 flex w-fit items-center justify-center hover:scale-125 hover:text-red-400"
       >
         <Icon name="material-symbols-light:tab-close" width="40" />
       </button>
@@ -44,7 +44,7 @@ const isLeft = side === "left";
     </div>
 
     <div class={`mt-20 flex ${isLeft ? "justify-end" : "justify-start"}`}>
-      <button id="left-right-button" class="ml-2 mr-2 mt-auto">
+      <button id="left-right-button" class="ml-2 mr-2 mt-auto hover:scale-125">
         <Icon
           name={`${isLeft ? "material-symbols:arrow-right-alt" : "material-symbols:arrow-left-alt"}`}
           width="40"
@@ -54,8 +54,8 @@ const isLeft = side === "left";
   </div>
 
   <!-- Hamburger -->
-  <div class={`absolute mt-8 z-40 ${isLeft ? "ml-5" : "mr-5"} hover:scale-125`}>
-    <button id="hamburger" aria-expanded="false" aria-controls="menu">
+  <div class={`absolute mt-10 z-40 ${isLeft ? "ml-5" : "mr-5"}`}>
+    <button id="hamburger" class="hover:scale-125 hover:bg-blue-500 p-2">
       <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
       <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
       <span class="block h-1 w-6 bg-indigo-200"></span>
@@ -115,7 +115,6 @@ const isLeft = side === "left";
     // show menu if hamburger is clicked
     document.getElementById("hamburger")?.addEventListener("click", (event) => {
       event.stopPropagation();
-
       show();
     });
 

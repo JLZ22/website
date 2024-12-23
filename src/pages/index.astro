@@ -12,7 +12,7 @@ const projectOrder = [
   "Pacman with Gridworld",
 ];
 
-allProjects.sort((a, b) => {
+allProjects.sort((a: CollectionEntry<'project'>, b: CollectionEntry<'project'>) => {
   let aIndex = getIndex(a);
   let bIndex = getIndex(b);
 
@@ -34,7 +34,7 @@ function getIndex(project: CollectionEntry<"project">) {
     <h1 class="text-3xl">About Me</h1>
   </div>
   <div class="p-5 mt-10">
-    <p>
+    <p class="sm:text-justify leading-7">
       Hi! I am a Junior at Purdue University studying Computer Science and
       Artificial Intelligence. I spend most of my time doing research at the
       Digital Enterprise Center for Industry 4.0. My current project involves

@@ -2,11 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: futura-pt, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.1rem;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  @apply bg-zinc-900 text-indigo-200 
 }
 
 .hyperlink {
