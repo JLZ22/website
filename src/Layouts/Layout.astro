@@ -2,8 +2,7 @@
 import "../styles/global.css";
 import NavMenu from "../components/NavMenu.astro";
 import Hamburger from "../components/Hamburger.astro";
-
-const sectionSlugs = ["/research", "/projects", "/creative", "/"];
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -20,44 +19,39 @@ const { title, section } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link href="./output.css" rel="stylesheet" />
-    {
-      sectionSlugs.map((slug) => {
-        return <link rel="preload" href={slug} as="document" />;
-      })
-    }
     <title>{title}</title>
+    <ClientRouter />
   </head>
-  <body class="bg-zinc-900 text-indigo-200 flex flex-col min-h-screen">
-    <div class="bg-zinc-900 fade-out"/>
+  <body class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200">
+    <!-- <div class="bg-zinc-900 fade-out"/> -->
 
     <!-- Hamburger Menu -->
-    <div class="absolute right-0 mr-7 mt-7 block focus:outline-none md:hidden">
-      <Hamburger />
+    <div class="block focus:outline-none md:hidden">
+      <Hamburger section={section} side="right" />
     </div>
-    
-    <!-- Main Content -->
-     <main class="flex-grow flex justify-center">
 
-         <div class="mt-10 w-full xl:w-2/3">
-           <div class="flex flex-grow flex-col justify-center md:flex-row">
-             <div class="min-w-fit ml-4">
-               <div class="text-center text-4xl hover:underline">
-                 <a href="/">John Zeng</a>
-               </div>
-               <div class="mr-5 mt-10 hidden md:block">
-                 <NavMenu section={section} />
-               </div>
-             </div>
-             <div class="w-full md:ml-10">
-               <slot />
-             </div>
-           </div>
-         </div>
-     </main>
-    
+    <!-- Main Content -->
+    <main class="flex flex-grow justify-center">
+      <div class="mt-10 w-full xl:w-2/3">
+        <div class="flex flex-grow flex-col justify-center md:flex-row">
+          <div class="ml-4 min-w-fit">
+            <div class="text-center text-4xl hover:underline">
+              <a href="/">John Zeng</a>
+            </div>
+            <div class="mr-5 mt-10 hidden md:block">
+              <NavMenu section={section} />
+            </div>
+          </div>
+          <div class="w-full md:ml-10">
+            <slot />
+          </div>
+        </div>
+      </div>
+    </main>
+
     <!-- Footer -->
     <footer class="text-center">
-      © 2024 John Zeng 
+      © 2024 John Zeng
       <a href="https://github.com/JLZ22/website" class="hyperlink">Source</a>
     </footer>
   </body>
