@@ -7,9 +7,10 @@ import { ClientRouter } from "astro:transitions";
 interface Props {
   title: string;
   section: string;
+  heading?: string;
 }
 
-const { title, section } = Astro.props;
+const { title, section, heading } = Astro.props;
 ---
 
 <html lang="en">
@@ -23,12 +24,10 @@ const { title, section } = Astro.props;
     <ClientRouter />
   </head>
   <body class="flex min-h-screen flex-col">
-
     <!-- Hamburger Menu -->
     <div class="block focus:outline-none md:hidden">
-      <Hamburger section={section}/>
+      <Hamburger section={section} />
     </div>
-
     <!-- Main Content -->
     <main class="flex flex-grow justify-center">
       <div class="mt-10 w-full xl:w-2/3">
@@ -42,12 +41,20 @@ const { title, section } = Astro.props;
             </div>
           </div>
           <div class="w-full md:ml-10">
-            <slot />
+            <div
+              class="ml-5 mt-16 text-left underline underline-offset-4 md:text-center md:no-underline"
+            >
+              <h1 class="text-3xl">
+                {heading ? heading : section}
+              </h1>
+            </div>
+            <div class="p-5">
+              <slot />
+            </div>
           </div>
         </div>
       </div>
     </main>
-
     <!-- Footer -->
     <footer class="text-center">
       © 2024 John Zeng
