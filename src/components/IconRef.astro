@@ -7,16 +7,14 @@ interface props {
   width: number;
 }
 
-const { name, link, width } = Astro.props;
+const { name, link, width } = Astro.props as props;
 ---
 
-<div class="group relative">
-  <a href={link} target="_blank" class="relative">
+  <a href={link} target="_blank">
     <Icon
       name={name}
       width={width}
       height={width}
-      class="hover:text-theme mb-4 ml-4 mr-4 mt-4 transition-all ease-linear hover:scale-125"
+      class="hover:text-theme transition-all ease-linear hover:scale-125"
     />
   </a>
-</div>

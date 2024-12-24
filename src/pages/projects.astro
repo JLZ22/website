@@ -1,0 +1,38 @@
+---
+import Layout from "../Layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Project from "../components/Project.astro";
+
+const allProjects = await getCollection("project");
+
+const projectOrder = [
+  "Rugby Infinite Passing",
+  "Git Tutorial",
+  "Pascal Compiler",
+  "Pacman with Gridworld",
+];
+
+allProjects.sort(
+  (a: CollectionEntry<"project">, b: CollectionEntry<"project">) => {
+    let aIndex = getIndex(a);
+    let bIndex = getIndex(b);
+
+    if (aIndex === bIndex) {
+      return a.data.title.localeCompare(b.data.title);
+    }
+
+    return aIndex - bIndex;
+  },
+);
+
+function getIndex(project: CollectionEntry<"project">) {
+  let ind = projectOrder.indexOf(project.data.title);
+  return ind === -1 ? projectOrder.length : ind;
+}
+---
+
+<Layout title="John's Projects" section="Side Projects">
+  <span class="lg:hidden">Click on any project for more details!</span>
+  {allProjects.map((project) => <Project project={project} />)}
+</Layout>

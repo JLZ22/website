@@ -1,0 +1,52 @@
+---
+import IconRef from "../components/IconRef.astro";
+
+const sections = [
+  { title: "About", href: "/", target: "_self" },
+  { title: "Research", href: "/research", target: "_self" },
+  { title: "Side Projects", href: "/projects", target: "_self" },
+  { title: "Creative", href: "/creative", target: "_self" },
+  {
+    title: "Resume",
+    href: "https://github.com/JLZ22/Resume/blob/main/John_Zeng_Resume.pdf",
+    target: "_blank",
+  },
+];
+
+interface Props {
+  section: string;
+}
+
+const { section } = Astro.props;
+const ICON_WIDTH = 40;
+---
+
+<!-- Nav Links -->
+<nav class="grid grid-rows-3 gap-4 text-left text-sm">
+  {
+    sections.map(({ title, href, target }) => {
+      let cssClass = section === title ? "underline" : "hover:underline";
+      cssClass += " w-fit";
+      return (
+        <a href={href} class={cssClass} target={target}>
+          {title}
+        </a>
+      );
+    })
+  }
+</nav>
+
+<div class="mt-10">
+  <div class="mb-5 flex flex-row space-x-5">
+    <IconRef
+      name="simple-icons:github"
+      link="https://github.com/jlz22"
+      width={ICON_WIDTH}
+    />
+    <IconRef
+      name="simple-icons:linkedin"
+      link="https://www.linkedin.com/in/John-L-Zeng"
+      width={ICON_WIDTH}
+    />
+  </div>
+</div>

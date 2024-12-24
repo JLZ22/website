@@ -1,119 +1,26 @@
 ---
-import IconRef from "../components/IconRef.astro";
-import Project from "../components/Project.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-import "../styles/global.css";
-
-const ICON_WIDTH = 40;
-const allProjects = await getCollection("project");
-
-const projectOrder = ["Rugby Infinite Passing", "Git Tutorial"];
-
-allProjects.sort((a, b) => {
-  let aIndex = getIndex(a);
-  let bIndex = getIndex(b);
-
-  if (aIndex === bIndex) {
-    return a.data.title.localeCompare(b.data.title);
-  }
-
-  return aIndex - bIndex;
-});
-
-function getIndex(project: CollectionEntry<"project">) {
-  let ind = projectOrder.indexOf(project.data.title);
-  return ind === -1 ? projectOrder.length : ind;
-}
+import Layout from "../Layouts/Layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link href="./output.css" rel="stylesheet" />
-    <title>John Zeng</title>
-  </head>
-  <body class="flex min-h-screen flex-col bg-zinc-900 text-indigo-200">
-    <main class="ml-5 mt-5 flex-grow">
-      <section id="hero" class="text-center">
-        <div class="p-4">
-          <a href="https://johnzeng.me">
-            <h1 class="p-4 text-5xl font-bold">John Zeng</h1>
-          </a>
-          <div class="flex flex-row justify-center">
-            <IconRef
-              name="simple-icons:github"
-              link="https://github.com/jlz22"
-              width={ICON_WIDTH}
-            />
-            <IconRef
-              name="simple-icons:discord"
-              link="https://discordapp.com/users/519383092012515338"
-              width={ICON_WIDTH}
-            />
-            <IconRef
-              name="simple-icons:readdotcv"
-              link="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
-              width={ICON_WIDTH}
-            />
-            <IconRef
-              name="simple-icons:linkedin"
-              link="https://www.linkedin.com/in/John-L-Zeng"
-              width={ICON_WIDTH}
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="about">
-        <div class="flex flex-col items-center justify-center">
-          <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
-            <h1 class="text-left text-2xl">About Me:</h1>
-            <div class="mt-2 p-4">
-              <p>
-                Hi! I am a Junior at Purdue University studying Computer Science
-                and Artificial Intelligence. I spend most of my time doing
-                research at the Digital Enterprise Center for Industry 4.0
-                technologies, but lately, web dev has sparked my interest. In my
-                free times, I enjoy pc gaming and playing as a prop (and more
-                recently a winger :D) for <a
-                  class="hyperlink"
-                  href="https://www.instagram.com/purduemensrugby/?hl=en"
-                  target="_blank">Purdue Men's Rugby</a
-                >.
-
-                <br />
-                <br />
-                You can contact me at <span class="italic"
-                  >zeng261 [at] purdue [dot] edu</span
-                >. Find my resume <a
-                  href="https://github.com/JLZ22/Resume/raw/main/John_Zeng_Resume.pdf"
-                  target="_blank"
-                  class="hyperlink">here</a
-                >!
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <section id="projects" class="mt-5">
-          <div class="flex flex-col items-center justify-center">
-            <div class="w-full sm:w-full md:w-full lg:w-3/4 xl:w-7/12">
-              <h1 class="text-left text-2xl">Projects:</h1>
-              {allProjects.map((project) => <Project project={project} />)}
-            </div>
-          </div>
-        </section>
-      </section>
-    </main>
-    <footer class="bottom-0 left-0 p-4 text-center">
-      © 2024 John Zeng <a
-        href="https://github.com/JLZ22/website"
-        class="hyperlink">Source</a
-      >
-    </footer>
-  </body>
-</html>
+<Layout title="John Zeng" section="About">
+  <p class="leading-7 sm:text-justify">
+    Hi! I am a Junior at Purdue University studying Computer Science and
+    Artificial Intelligence. I spend most of my time doing research at the
+    Digital Enterprise Center for Industry 4.0. My current project involves
+    integrating with automated tools and computer vision for assembly
+    verification and comprehensive data collection. In my free times, I enjoy pc
+    gaming and playing as a prop (and more recently a winger :D) for <a
+      class="hyperlink"
+      href="https://www.instagram.com/purduemensrugby/?hl=en"
+      target="_blank">Purdue Men's Rugby</a
+    >.
+    <br />
+    <br />
+    Contact me at <span class="italic">zeng261 [at] purdue [dot] edu</span>. <br
+    /> Find my resume <a
+      href="https://github.com/JLZ22/Resume/blob/main/John_Zeng_Resume.pdf"
+      target="_blank"
+      class="hyperlink">here</a
+    >!
+  </p>
+</Layout>

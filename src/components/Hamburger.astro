@@ -1,0 +1,130 @@
+---
+import NavMenu from "./NavMenu.astro";
+import Icon from "astro-iconify";
+
+interface Props {
+  section: string;
+}
+
+const { section } = Astro.props;
+---
+
+<div id="screen" class={`absolute h-screen w-screen flex justify-start`}>
+  <div
+    id="side-menu"
+    class={`h-screen w-36 flex-col justify-end z-30 bg-zinc-950 opacity-85 -translate-x-full transition-all ease-linear`}
+  >
+    <!-- Close Button -->
+    <div id="close" class={` w-full flex justify-end`}>
+      <button
+        id="close-button"
+        class="mx-2 mt-7 flex w-fit items-center justify-center transition-all ease-linear hover:scale-125 hover:text-red-400"
+      >
+        <Icon name="material-symbols-light:tab-close" width="40" />
+      </button>
+    </div>
+
+    <!-- Menu -->
+    <div class="ml-5 mt-16">
+      <NavMenu section={section} />
+    </div>
+  </div>
+
+  <!-- Hamburger -->
+  <div class={`absolute mt-10 z-40 mx-5`}>
+    <button
+      id="hamburger"
+      class="rounded-md p-2 opacity-100 transition-all ease-linear hover:scale-125 hover:bg-blue-500"
+    >
+      <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
+      <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
+      <span class="block h-1 w-6 bg-indigo-200"></span>
+    </button>
+  </div>
+</div>
+
+<script>
+  let open = false;
+
+  function hide() {
+    let sideMenu = document.getElementById("side-menu");
+
+    // start hiding the menu
+    // a global listener adds the hidden class after transition ends
+    sideMenu?.classList.add("-translate-x-full");
+
+    // store state of the menu
+    open = false;
+
+    // show the burger
+    let cl = document.getElementById("hamburger")?.classList;
+    cl?.remove("hidden");
+    cl?.replace("opacity-0", "opacity-100");
+
+    document.body.classList.remove("overflow-hidden");
+  }
+
+  function show() {
+    let sideMenu = document.getElementById("side-menu");
+    sideMenu?.classList.remove("hidden");
+
+    // translate when we know the element is unhidden
+    requestAnimationFrame(() => {
+      sideMenu?.classList.remove("-translate-x-full");
+    });
+
+    // store state of the menu
+    open = true;
+
+    // hide the burger
+    // a listener adds the hidden class after transition from opacity-100 to opacity-0 ends
+    document
+      .getElementById("hamburger")
+      ?.classList.replace("opacity-100", "opacity-0");
+
+    document.body.classList.add("overflow-hidden");
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    // reset the menu details to default hidden
+    hide();
+
+    // show menu if hamburger is clicked
+    document.getElementById("hamburger")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      show();
+    });
+
+    document.getElementById("close-button")?.addEventListener("click", () => {
+      hide();
+    });
+
+    // close the menu if it is open and anywhere outside menu is clicked
+    document.addEventListener("click", (event) => {
+      if (
+        open &&
+        !document.getElementById("side-menu")?.contains(event?.target as Node)
+      ) {
+        hide();
+      }
+    });
+
+    // wait for animation to finish before hiding component
+    document
+      .getElementById("side-menu")
+      ?.addEventListener("transitionend", () => {
+        if (!open) {
+          document.getElementById("side-menu")?.classList.add("hidden");
+        }
+      });
+      
+    // wait for animation to finish before hiding component
+    document
+      .getElementById("hamburger")
+      ?.addEventListener("transitionend", () => {
+        if (open) {
+          document.getElementById("hamburger")?.classList.add("hidden");
+        }
+      });
+  });
+</script>
