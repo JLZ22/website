@@ -105,6 +105,7 @@ const { section } = Astro.props;
 
     toggleOpen();
     toggleBurger();
+    document.body.classList.remove("overflow-hidden");
   }
 
   function show() {
@@ -114,6 +115,7 @@ const { section } = Astro.props;
 
     toggleOpen();
     toggleBurger();
+    document.body.classList.add("overflow-hidden");
   }
 
   document.addEventListener("astro:page-load", () => {
