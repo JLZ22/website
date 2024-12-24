@@ -46,32 +46,14 @@ const { section } = Astro.props;
 </div>
 
 <script>
-import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icons.js";
-
   let open = false;
-
-  function toggleOpen() {
-    open = !open;
-  }
 
   function getSideMenu() {
     return document.getElementById("side-menu");
   }
 
-  function toggleBurger() {
-    const burger = document.getElementById("hamburger");
-    if (burger == null) {
-      return;
-    }
-    let cl = burger.classList; 
-
-    if (cl.contains("opacity-100")) {
-      // a global listener modifies adds the hidden class after transition ends
-      cl.replace("opacity-100", "opacity-0");
-    } else {
-      cl.remove("hidden");
-      cl.replace("opacity-0", "opacity-100");
-    }
+  function getHamburger() {
+    return document.getElementById("hamburger");
   }
 
   function hide() {
@@ -81,8 +63,14 @@ import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icon
     // a global listener adds the hidden class after transition ends
     sideMenu?.classList.add("-translate-x-full");
     
-    toggleOpen();
-    toggleBurger();
+    // store state of the menu
+    open = false;
+
+    // show the burger
+    let cl = getHamburger()?.classList;
+    cl?.remove("hidden");
+    cl?.replace("opacity-0", "opacity-100");
+
     document.body.classList.remove("overflow-hidden");
   }
 
@@ -96,14 +84,22 @@ import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icon
       
     });
 
-    toggleOpen();
-    toggleBurger();
+    // store state of the menu 
+    open = true;
+
+    // hide the burger 
+    // a listener adds the hidden class after transition from opacity-100 to opacity-0 ends
+    getHamburger()?.classList.replace("opacity-100", "opacity-0");
+
     document.body.classList.add("overflow-hidden");
   }
 
   document.addEventListener("astro:page-load", () => {
+    // reset the menu details to default hidden
+    hide();
+
     // show menu if hamburger is clicked
-    document.getElementById("hamburger")?.addEventListener("click", (event) => {
+    getHamburger()?.addEventListener("click", (event) => {
       event.stopPropagation();
       show();
     });
@@ -116,7 +112,7 @@ import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icon
     document.addEventListener("click", (event) => {
       if (
         open &&
-        !document.getElementById("side-menu")?.contains(event?.target as Node)
+        !getSideMenu()?.contains(event?.target as Node)
       ) {
         hide();
       }
@@ -127,13 +123,13 @@ import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icon
       .getElementById("side-menu")
       ?.addEventListener("transitionend", () => {
         if (!open) {
-          document.getElementById("side-menu")?.classList.add("hidden");
+          getSideMenu()?.classList.add("hidden");
         }
       });
 
-    document.getElementById("hamburger")?.addEventListener("transitionend", () => {
+    getHamburger()?.addEventListener("transitionend", () => {
       if (open) {
-        document.getElementById("hamburger")?.classList.add("hidden");
+        getHamburger()?.classList.add("hidden");
       }
     });
   });
