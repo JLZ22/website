@@ -9,23 +9,16 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<div
-  id="screen"
-  class={`absolute h-screen w-screen flex justify-start`}
->
+<div id="screen" class={`absolute h-screen w-screen flex justify-start`}>
   <div
     id="side-menu"
-    class={`h-screen w-36 flex-col justify-end z-30 bg-zinc-950 opacity-85 transition-transform duration-1000 ease-in-out`}
-    hidden
+    class={`h-screen w-36 flex-col justify-end z-30 bg-zinc-950 opacity-85 -translate-x-full transition-all ease-linear`}
   >
     <!-- Close Button -->
-    <div
-      id="close"
-      class={` w-full flex justify-end`}
-    >
+    <div id="close" class={` w-full flex justify-end`}>
       <button
         id="close-button"
-        class="ml-2 mr-2 mt-7 flex w-fit items-center justify-center hover:scale-125 hover:text-red-400"
+        class="mx-2 mt-7 flex w-fit items-center justify-center hover:scale-125 hover:text-red-400 transition-all ease-linear"
       >
         <Icon name="material-symbols-light:tab-close" width="40" />
       </button>
@@ -36,20 +29,15 @@ const { section } = Astro.props;
       <NavMenu section={section} />
     </div>
 
-    <div id="left-right" class={`mt-20 flex justify-end`}>
-      <button id="left-right-button" class="p-2 mt-auto ">
-        <Icon
-          id="arrow-icon"
-          name={`material-symbols:arrow-right-alt`}
-          width="40"
-        />
-      </button>
-    </div>
+    
   </div>
 
   <!-- Hamburger -->
-  <div class={`absolute mt-10 z-40 ml-5 mr-5`}>
-    <button id="hamburger" class="hover:scale-125 hover:bg-blue-500 p-2">
+  <div class={`absolute mt-10 z-40 mx-5`}>
+    <button
+      id="hamburger"
+      class="p-2 transition-all hover:scale-125 hover:bg-blue-500 rounded-md opacity-100 ease-linear"
+    >
       <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
       <span class="mb-1 block h-1 w-6 bg-indigo-200"></span>
       <span class="block h-1 w-6 bg-indigo-200"></span>
@@ -58,36 +46,12 @@ const { section } = Astro.props;
 </div>
 
 <script>
+import { getIconElement } from "astro/runtime/client/dev-toolbar/ui-library/icons.js";
+
   let open = false;
-  let left = true;
-
-  function toggleSides() {
-    function replaceClass(elem: HTMLElement | null, curr: string, incoming: string) {
-      elem?.classList.remove(curr)
-      elem?.classList.add(incoming)
-    }
-    left = !left;
-    let js = "justify-start"
-    let je = "justify-end"
-
-    if (!left) {
-      replaceClass(document.getElementById("screen"), js, je);
-      replaceClass(document.getElementById("side-menu"), je, js);
-      replaceClass(document.getElementById("close"), je, js);
-      replaceClass(document.getElementById("left-right"), je, js);
-      document.getElementById("left-right-button")?.classList.add("rotate-180")
-    } else {
-      replaceClass(document.getElementById("screen"), je, js);
-      replaceClass(document.getElementById("side-menu"), js, je);
-      replaceClass(document.getElementById("close"), js, je);
-      replaceClass(document.getElementById("left-right"), js, je);
-      document.getElementById("left-right-button")?.classList.remove("rotate-180")
-    }
-  }
 
   function toggleOpen() {
     open = !open;
-    document.getElementById("close-button");
   }
 
   function getSideMenu() {
@@ -95,14 +59,28 @@ const { section } = Astro.props;
   }
 
   function toggleBurger() {
-    document.getElementById("hamburger")?.toggleAttribute("hidden");
+    const burger = document.getElementById("hamburger");
+    if (burger == null) {
+      return;
+    }
+    let cl = burger.classList; 
+
+    if (cl.contains("opacity-100")) {
+      // a global listener modifies adds the hidden class after transition ends
+      cl.replace("opacity-100", "opacity-0");
+    } else {
+      cl.remove("hidden");
+      cl.replace("opacity-0", "opacity-100");
+    }
   }
 
   function hide() {
     let sideMenu = getSideMenu();
 
-    sideMenu?.toggleAttribute("hidden");
-
+    // start hiding the menu 
+    // a global listener adds the hidden class after transition ends
+    sideMenu?.classList.add("-translate-x-full");
+    
     toggleOpen();
     toggleBurger();
     document.body.classList.remove("overflow-hidden");
@@ -110,8 +88,13 @@ const { section } = Astro.props;
 
   function show() {
     let sideMenu = getSideMenu();
+    sideMenu?.classList.remove("hidden");
 
-    sideMenu?.toggleAttribute("hidden");
+    // translate when we know the element is unhidden
+    requestAnimationFrame(() => {
+        sideMenu?.classList.remove("-translate-x-full");
+      
+    });
 
     toggleOpen();
     toggleBurger();
@@ -129,9 +112,8 @@ const { section } = Astro.props;
       hide();
     });
 
-    // close the menu if it is open and anywhere is clicked
+    // close the menu if it is open and anywhere outside menu is clicked
     document.addEventListener("click", (event) => {
-      // menu open and click not on the menu
       if (
         open &&
         !document.getElementById("side-menu")?.contains(event?.target as Node)
@@ -140,8 +122,19 @@ const { section } = Astro.props;
       }
     });
 
-    document.getElementById("left-right-button")?.addEventListener("click", () => {
-      toggleSides();
+    // wait for animation to finish before hiding component
+    document
+      .getElementById("side-menu")
+      ?.addEventListener("transitionend", () => {
+        if (!open) {
+          document.getElementById("side-menu")?.classList.add("hidden");
+        }
+      });
+
+    document.getElementById("hamburger")?.addEventListener("transitionend", () => {
+      if (open) {
+        document.getElementById("hamburger")?.classList.add("hidden");
+      }
     });
   });
 </script>
