@@ -26,7 +26,7 @@ const ICON_WIDTH = 40;
   {
     sections.map(({ title, href, target }) => {
       let cssClass = section === title ? "underline" : "hover:underline";
-      cssClass += " w-fit";
+      cssClass += " w-fit nav-link";
       return (
         <a href={href} class={cssClass} target={target}>
           {title}

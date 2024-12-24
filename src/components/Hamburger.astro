@@ -95,6 +95,7 @@ const { section } = Astro.props;
       show();
     });
 
+    // close menu if close button is clicked
     document.getElementById("close-button")?.addEventListener("click", () => {
       hide();
     });
@@ -107,6 +108,13 @@ const { section } = Astro.props;
       ) {
         hide();
       }
+    });
+
+    // close menu if any of the nav links are clicked
+    Array.from(document.getElementsByClassName("nav-link")).forEach((element: Element) => {
+      element.addEventListener("click", () => {
+        hide();
+      });
     });
 
     // wait for animation to finish before hiding component
