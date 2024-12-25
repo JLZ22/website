@@ -7,6 +7,10 @@ body {
   @apply bg-zinc-900 text-indigo-200 
 }
 
+p {
+  @apply leading-7 sm:text-justify;
+}
+
 .hyperlink {
   color: #0070f3;
   text-decoration: none;
