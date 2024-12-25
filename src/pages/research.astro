@@ -1,9 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../Layouts/Layout.astro";
+import ResearchProject from "../components/ResearchProject.astro";
+import { orderCollectionEntries } from "../resources/utils";
+
+const allResearch = await getCollection("researchProject");
+const researchOrder = ["Digital Enterprise Center"];
+
+orderCollectionEntries(allResearch, researchOrder); 
 ---
 
 <Layout title="John's Research" section="Research">
-    <p>
-        I am currently working on a project at the Digital Enterprise Center for Industry 4.0. My current project involves integrating with automated tools and computer vision for assembly verification and comprehensive data collection.
-    </p>
+  {allResearch.map((proj) => <ResearchProject researchProject={proj}/> )}
 </Layout>

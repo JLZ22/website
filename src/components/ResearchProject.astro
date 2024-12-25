@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+    researchProject: CollectionEntry<"researchProject">;
+}
+
+const { researchProject } = Astro.props as Props;
+const title = researchProject.data.title;
+const dateRange = researchProject.data.dateRange;
+const { Content } = await render(researchProject);
+---
+<div class="flex flex-row justify-between">
+    <div class="text-xl underline underline-offset-8">
+        {title}
+    </div>
+    <div class="italic">
+        {dateRange}
+    </div>
+</div>
+    <div class="mt-5 markdown-body">
+        <Content />
+    </div>
