@@ -1,6 +1,7 @@
 ---
 import NavMenu from "./NavMenu.astro";
 import Icon from "astro-iconify";
+import PurdueHackersWebring from "./PurdueHackersWebring.astro";
 
 interface Props {
   section: string;
@@ -30,6 +31,9 @@ const { section } = Astro.props;
     <!-- Menu -->
     <div class="ml-5 mt-16">
       <NavMenu section={section} />
+    </div>
+    <div class="mx-4">
+      <PurdueHackersWebring />
     </div>
   </div>
 

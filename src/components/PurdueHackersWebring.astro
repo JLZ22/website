@@ -1,0 +1,29 @@
+---
+import Image from "astro/components/Image.astro";
+import PurdueHackers from "@resources/images/PurdueHackers.svg";
+---
+
+<div class="mt-10 flex items-center justify-between transition-all ease-linear">
+  <a href="https://ring.purduehackers.com/next?host=johnzeng.me">
+    <div
+      class="block px-1 duration-200 hover:-translate-x-1 hover:scale-125 hover:underline"
+    >
+      ←
+    </div>
+  </a>
+  <a href="https://ring.purduehackers.com" class="hover:underline">
+    <Image
+      src={PurdueHackers}
+      alt="Purdue Hackers"
+      class="h-[50px] w-[50px] duration-200 hover:scale-125"
+    />
+  </a>
+  <div
+    class="block px-1 duration-200 hover:translate-x-1 hover:scale-125 hover:underline"
+  >
+    <a
+      href="https://ring.purduehackers.com/previous?host=johnzeng.me"
+      class="hover:underline">→</a
+    >
+  </div>
+</div>
