@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        bg: "#18181b",
+        fg: "#c7d2fe",
+      },
+      screens: {
+        'xxl': '1536px',
+      }
+    }
+  },
   plugins: [],
 };

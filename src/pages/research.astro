@@ -5,11 +5,14 @@ import ResearchProject from "@components/ResearchProject.astro";
 import { orderCollectionEntries } from "@resources/utils";
 
 const allResearch = await getCollection("researchProject");
-const researchOrder = ["Digital Enterprise Center"];
+const researchOrder = ["Digital Enterprise Center (DEC)"];
 
 orderCollectionEntries(allResearch, researchOrder); 
 ---
 
 <Layout title="John's Research" section="Research">
-  {allResearch.map((proj) => <ResearchProject researchProject={proj}/> )}
+  <div class="mt-5">
+
+    {allResearch.map((proj) => <ResearchProject researchProject={proj}/> )}
+  </div>
 </Layout>
