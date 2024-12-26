@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../Layouts/Layout.astro";
-import ResearchProject from "../components/ResearchProject.astro";
-import { orderCollectionEntries } from "../resources/utils";
+import Layout from "@layouts/Layout.astro";
+import ResearchProject from "@components/ResearchProject.astro";
+import { orderCollectionEntries } from "@resources/utils";
 
 const allResearch = await getCollection("researchProject");
 const researchOrder = ["Digital Enterprise Center"];

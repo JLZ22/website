@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { orderCollectionEntries } from "../resources/utils.ts";
-import Layout from "../Layouts/Layout.astro";
-import Project from "../components/Project.astro";
+import { orderCollectionEntries } from "@resources/utils.ts";
+import Layout from "@layouts/Layout.astro";
+import Project from "@components/Project.astro";
 
 const allProjects = await getCollection("project");
 
