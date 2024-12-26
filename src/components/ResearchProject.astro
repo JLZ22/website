@@ -13,19 +13,9 @@ const dateRange = researchProject.data.dateRange;
 const { Content } = await render(researchProject);
 ---
 
-<div class="lg:underline-div">
+<div class="md:border-b">
     <ProjectHeader title={title} dateRange={dateRange}/>
 </div>
-<div class="markdown-body mt-5">
+<div class="markdown-body mt-5 px-2 md:px-0 side-lines border-x md:border-x-0">
   <Content />
 </div>
-
-
-<style> 
-
-    @media (min-width: 1024px) {
-        .lg\:underline-div {
-          border-bottom: 1px solid;
-        }
-    }
-    </style>
