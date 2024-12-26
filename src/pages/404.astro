@@ -1,8 +1,7 @@
 ---
-import "../styles/global.css";
+import "@styles/global.css";
 import { Image } from "astro:assets";
-import notFoundVisual from "../../public/404.svg";
-const sectionSlugs = ["/research", "/projects", "/creative", "/"];
+import notFoundVisual from "@resources/images/404.svg";
 const sections = [
   { title: "About", href: "/", target: "_self" },
   { title: "Research", href: "/research", target: "_self" },
@@ -16,19 +15,14 @@ const sections = [
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    {
-      sectionSlugs.map((slug) => {
-        return <link rel="preload" href={slug} as="document" />;
-      })
-    }
+    <link rel="preload" href={notFoundVisual.src} as="image" type="image/svg+xml"/>
     <title>404 uh oh!</title>
   </head>
   <body>
-    <div class="bg-zinc-900 fade-out"/>
     <div
       class="flex h-screen flex-col items-center justify-center space-y-8 text-center"
     >
-      <Image src={notFoundVisual} alt="404" width="250" />
+      <Image src={notFoundVisual} alt="404 Not Found" width="250"/>
       <span class="text-2xl">Seems like you're lost!</span>
       <div class="p-4">
         <span class="text-sm">Here are some helpful links.</span>

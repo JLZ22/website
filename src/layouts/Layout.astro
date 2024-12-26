@@ -1,7 +1,8 @@
 ---
-import "../styles/global.css";
-import NavMenu from "../components/NavMenu.astro";
-import Hamburger from "../components/Hamburger.astro";
+import "@styles/global.css";
+import NavMenu from "@components/NavMenu.astro";
+import Hamburger from "@components/Hamburger.astro";
+import PurdueHackersWebring from "@components/PurdueHackersWebring.astro";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -16,6 +17,10 @@ const { title, section, heading } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="John Zeng's personal website. You can find a short about along with my projects, research, and some for-fun creative work here!"
+    />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -29,23 +34,29 @@ const { title, section, heading } = Astro.props;
     </div>
     <!-- Main Content -->
     <main class="flex flex-grow justify-center">
-      <div class="mt-10 w-full xl:w-2/3">
+      <div class="mt-10 w-full xl:w-3/4 xxl:w-2/3 lg:bg-inherit">
         <div class="flex flex-grow flex-col justify-center md:flex-row">
           <div class="ml-4 min-w-fit">
-            <div class="text-center text-4xl hover:underline">
+            <div
+              class="text-center text-4xl"
+            >
               <a href="/">John Zeng</a>
             </div>
             <div class="mr-5 mt-10 hidden md:block">
               <NavMenu section={section} />
+              <PurdueHackersWebring/>
+            </div>
+            <div>
+
             </div>
           </div>
           <div class="w-full md:ml-10">
             <div
               class="ml-5 mt-16 text-left underline underline-offset-4 md:text-center md:no-underline"
             >
-              <h1 class="text-3xl">
+              <div class="text-3xl">
                 {heading ? heading : section}
-              </h1>
+              </div>
             </div>
             <div class="p-5">
               <slot />
@@ -55,7 +66,7 @@ const { title, section, heading } = Astro.props;
       </div>
     </main>
     <!-- Footer -->
-    <footer class="text-center">
+    <footer class="text-center mb-4">
       © 2024 John Zeng
       <a href="https://github.com/JLZ22/website" class="hyperlink">Source</a>
     </footer>

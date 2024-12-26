@@ -1,0 +1,31 @@
+---
+import ProjectHeader from "./ProjectHeader.astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+interface Props {
+  researchProject: CollectionEntry<"researchProject">;
+}
+
+const { researchProject } = Astro.props as Props;
+const title = researchProject.data.title;
+const dateRange = researchProject.data.dateRange;
+const { Content } = await render(researchProject);
+---
+
+<div class="lg:underline-div">
+    <ProjectHeader title={title} dateRange={dateRange}/>
+</div>
+<div class="markdown-body mt-5">
+  <Content />
+</div>
+
+
+<style> 
+
+    @media (min-width: 1024px) {
+        .lg\:underline-div {
+          border-bottom: 1px solid;
+        }
+    }
+    </style>

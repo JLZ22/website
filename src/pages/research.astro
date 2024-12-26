@@ -1,7 +1,18 @@
 ---
-import Layout from "../Layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import ResearchProject from "@components/ResearchProject.astro";
+import { orderCollectionEntries } from "@resources/utils";
+
+const allResearch = await getCollection("researchProject");
+const researchOrder = ["Digital Enterprise Center (DEC)"];
+
+orderCollectionEntries(allResearch, researchOrder); 
 ---
 
 <Layout title="John's Research" section="Research">
-    WIP
+  <div class="mt-5">
+
+    {allResearch.map((proj) => <ResearchProject researchProject={proj}/> )}
+  </div>
 </Layout>

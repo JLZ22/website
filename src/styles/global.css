@@ -1,10 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,300);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  @apply bg-zinc-900 text-indigo-200 
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-weight: 300;
+  @apply bg-bg text-fg underline-offset-4;
+}
+
+p {
+  @apply leading-7 sm:text-justify;
 }
 
 .hyperlink {
@@ -24,97 +30,4 @@ body {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.left-1\/5 {
-  left: 20%;
-}
-
-.left-1\/10 {
-  left: 10%;
-}
-
-.min-w-160 {
-  min-width: 32 rem;
-}
-
-@media (min-width: 760px) {
-  .md\:left-1\/5 {
-    left: 20%;
-  }
-
-  .md\:left-1\/10 {
-    left: 10%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:.left-1\/5 {
-    left: 20%;
-  }
-
-  .lg\:left-1\/10 {
-    left: 10%;
-  }
-
-  .lg\:w-168 {
-    width: 42rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:left-1\/5 {
-    left: 20%;
-  }
-
-  .xl\:left-1\/10 {
-    left: 10%;
-  }
-}
-
-@media (min-width: 1536px) {
-  .xxl\:left-1\/4 {
-    left: 25%;
-  }
-  .xxl\:left-1\/5 {
-    left: 20%;
-  }
-
-  .xxl\:left-1\/10 {
-    left: 10%;
-  }
-
-  .xxl\:w-1\/2 {
-    width: 50%;
-  }
-
-  .xxl\:w-3\/4 {
-    width: 67%;
-  }
-
-  .xxl\:translate-x-0 {
-    --tw-translate-x: -45%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-      rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-      scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-}
-
-.fade-out {
-  position: fixed; /* Make it cover the entire screen */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  animation: fadeOut 1s linear forwards; /* Adjust time as needed */
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
 }
