@@ -9,10 +9,13 @@ interface Props {
 const { section } = Astro.props;
 ---
 
-<div id="screen" class={`absolute h-screen w-screen flex pointer-events-none justify-start`}>
+<div
+  id="screen"
+  class={`absolute h-screen w-screen flex pointer-events-none justify-start`}
+>
   <div
     id="side-menu"
-    class={`h-screen w-36 flex-col justify-end z-30 bg-zinc-950 opacity-85 -translate-x-full transition-all ease-linear pointer-events-auto`}
+    class={`h-screen overflow-y-auto w-36 flex-col justify-end z-30 bg-zinc-950 opacity-85 -translate-x-full transition-all ease-linear pointer-events-auto`}
   >
     <!-- Close Button -->
     <div id="close" class={` w-full flex justify-end`}>
@@ -36,9 +39,9 @@ const { section } = Astro.props;
       id="hamburger"
       class="rounded-md p-2 opacity-100 transition-all ease-linear hover:scale-125 hover:bg-blue-500"
     >
-      <span class="mb-1 block h-1 w-6 bg-fg"></span>
-      <span class="mb-1 block h-1 w-6 bg-fg"></span>
-      <span class="block h-1 w-6 bg-fg"></span>
+      <span class="bg-fg mb-1 block h-1 w-6"></span>
+      <span class="bg-fg mb-1 block h-1 w-6"></span>
+      <span class="bg-fg block h-1 w-6"></span>
     </button>
   </div>
 </div>
@@ -111,11 +114,13 @@ const { section } = Astro.props;
     });
 
     // close menu if any of the nav links are clicked
-    Array.from(document.getElementsByClassName("nav-link")).forEach((element: Element) => {
-      element.addEventListener("click", () => {
-        hide();
-      });
-    });
+    Array.from(document.getElementsByClassName("nav-link")).forEach(
+      (element: Element) => {
+        element.addEventListener("click", () => {
+          hide();
+        });
+      },
+    );
 
     // wait for animation to finish before hiding component
     document
@@ -125,7 +130,7 @@ const { section } = Astro.props;
           document.getElementById("side-menu")?.classList.add("hidden");
         }
       });
-      
+
     // wait for animation to finish before hiding component
     document
       .getElementById("hamburger")
