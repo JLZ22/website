@@ -29,20 +29,20 @@ const { title, section, heading } = Astro.props;
   </head>
   <body class="flex min-h-screen flex-col">
     <!-- Hamburger Menu -->
-    <div class="block focus:outline-none md:hidden">
+    <div class="block focus:outline-none lg:hidden">
       <Hamburger section={section} />
     </div>
     <!-- Main Content -->
     <main class="flex flex-grow justify-center">
       <div class="mt-10 w-full xl:w-3/4 xxl:w-2/3 lg:bg-inherit">
-        <div class="flex flex-grow flex-col justify-center md:flex-row">
+        <div class="flex flex-grow flex-col justify-center lg:flex-row">
           <div class="ml-4 min-w-fit">
             <div
               class="text-center text-4xl"
             >
               <a href="/">John Zeng</a>
             </div>
-            <div class="mr-5 mt-10 hidden md:block">
+            <div class="mr-5 mt-10 hidden lg:block">
               <NavMenu section={section} />
               <PurdueHackersWebring/>
             </div>
@@ -50,9 +50,9 @@ const { title, section, heading } = Astro.props;
 
             </div>
           </div>
-          <div class="w-full md:ml-10">
+          <div class="w-full lg:ml-10">
             <div
-              class="ml-5 mt-16 text-left underline underline-offset-4 md:text-center md:no-underline"
+              class="ml-5 mt-16 text-left underline underline-offset-4 lg:ml-0 lg:text-center lg:no-underline"
             >
               <div class="text-3xl">
                 {heading ? heading : section}
