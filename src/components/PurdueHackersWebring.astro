@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import PurdueHackers from "@resources/images/PurdueHackers.svg";
 ---
 
@@ -15,7 +15,8 @@ import PurdueHackers from "@resources/images/PurdueHackers.svg";
     <Image
       src={PurdueHackers}
       alt="Purdue Hackers"
-      class="h-[50px] w-[50px] duration-200 hover:scale-125"
+      width="50"
+      class="duration-200 hover:scale-125"
     />
   </a>
   <div
