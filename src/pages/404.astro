@@ -1,7 +1,7 @@
 ---
-import "@styles/global.css";
 import { Image } from "astro:assets";
 import notFoundVisual from "@resources/images/404.svg";
+import CenteredNoticeLayout from "@layouts/CenteredNoticeLayout.astro";
 const sections = [
   { title: "About", href: "/", target: "_self" },
   { title: "Research", href: "/research", target: "_self" },
@@ -9,39 +9,20 @@ const sections = [
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preload" href={notFoundVisual.src} as="image" type="image/svg+xml"/>
-    <title>404 uh oh!</title>
-  </head>
-  <body>
-    <div
-      class="flex h-screen flex-col items-center justify-center space-y-8 text-center"
-    >
-      <Image src={notFoundVisual} alt="404 Not Found" width="250"/>
-      <span class="text-2xl">Seems like you're lost!</span>
-      <div class="p-4">
-        <span class="text-sm">Here are some helpful links.</span>
-        <div class="mt-2 flex flex-row justify-center space-x-5">
-          {
-            sections.map(({ title, href, target }) => {
-              return (
-                <a href={href} class="hyperlink" target={target}>
-                  {title}
-                </a>
-              );
-            })
-          }
-        </div>
-      </div>
-    </div>
-    <footer class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center">
-      © 2024 John Zeng
-      <a href="https://github.com/JLZ22/website" class="hyperlink">Source</a>
-    </footer>
-  </body>
-</html>
+<CenteredNoticeLayout> 
+  <Image src={notFoundVisual} alt="404 Not Found" width="250" />
+        <span class="text-2xl">Seems like you're lost!</span>
+        <div class="p-4">
+          <span class="text-sm">Here are some helpful links.</span>
+          <div class="mt-2 flex flex-row justify-center space-x-5">
+            {
+              sections.map(({ title, href, target }) => {
+                return (
+                  <a href={href} class="hyperlink" target={target}>
+                    {title}
+                  </a>
+                );
+              })
+            }
+          </div>
+</CenteredNoticeLayout>

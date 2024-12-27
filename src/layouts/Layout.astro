@@ -34,7 +34,7 @@ const { title, section, heading } = Astro.props;
     </div>
     <!-- Main Content -->
     <main class="flex flex-grow justify-center">
-      <div class="mt-10 w-full xl:w-3/4 xxl:w-2/3 lg:bg-inherit">
+      <div class="mt-10 w-full xl:w-3/4 xxl:w-full max-w lg:bg-inherit">
         <div class="flex flex-grow flex-col justify-center lg:flex-row">
           <div class="ml-4 min-w-fit">
             <div
@@ -50,23 +50,21 @@ const { title, section, heading } = Astro.props;
 
             </div>
           </div>
-          <div class="w-full lg:ml-10">
+          <div class="w-full lg:ml-10 pl-5 pr-2">
             <div
-              class="ml-5 mt-16 text-left underline underline-offset-4 lg:ml-0 lg:text-center lg:no-underline"
+              class=" mt-16 text-left underline underline-offset-8 lg:ml-0 lg:text-center lg:no-underline"
             >
-              <div class="text-3xl">
+              <div class="text-3xl mb-5">
                 {heading ? heading : section}
               </div>
             </div>
-            <div class="p-5">
               <slot />
-            </div>
           </div>
         </div>
       </div>
     </main>
     <!-- Footer -->
-    <footer class="text-center mb-4">
+    <footer class="text-center m-4">
       © 2024 John Zeng
       <a href="https://github.com/JLZ22/website" class="hyperlink">Source</a>
     </footer>

@@ -18,6 +18,7 @@ const researchProject = defineCollection({
   schema: z.object({
     title: z.string(),
     dateRange: z.string(),
+    link: z.string().optional(),
   }),
 });
 

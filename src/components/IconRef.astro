@@ -4,17 +4,17 @@ import Icon from "astro-iconify";
 interface props {
   name: string;
   link: string;
-  width: number;
+  width?: number;
+  target?: string;
 }
 
-const { name, link, width } = Astro.props as props;
+const { name, link, width, target } = Astro.props as props;
 ---
 
-  <a href={link} target="_blank">
+  <a href={link} target={target ? target : "_self"}>
     <Icon
       name={name}
-      width={width}
-      height={width}
+      width={width ? width : 40}
       class="hover:text-theme transition-all ease-linear hover:scale-125"
     />
   </a>

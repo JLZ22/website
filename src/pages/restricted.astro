@@ -1,0 +1,21 @@
+---
+import CenteredNoticeLayout from "@layouts/CenteredNoticeLayout.astro";
+import Icon from "astro-iconify";
+---
+
+<CenteredNoticeLayout>
+  <span class="text-4xl">Public Access Is Restricted</span>
+  <div class="justify-start w-full flex">
+      <button id="back-button">
+        <div class="mt-2 flex transition-all ease-linear hover:scale-110 hover:underline text-xl">
+            <Icon name="material-symbols:arrow-back-ios-new-rounded" width="20"/>
+            <span class="px-2">Return</span>
+        </div>
+    </button>
+  </div>
+</CenteredNoticeLayout>
+<script>
+    document.getElementById("back-button")?.addEventListener("click", () => {
+        window.history.back();
+    });
+</script>

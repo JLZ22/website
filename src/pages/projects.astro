@@ -17,6 +17,7 @@ orderCollectionEntries(allProjects, projectOrder);
 ---
 
 <Layout title="John's Projects" section="Side Projects">
-  <span class="lg:hidden">Click on any project for more details!</span>
-  {allProjects.map((project) => <Project project={project} />)}
+  <div class="space-y-10 mt-10">
+    {allProjects.map((project) => <Project project={project} />)}
+  </div>
 </Layout>

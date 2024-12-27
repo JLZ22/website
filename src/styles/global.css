@@ -12,7 +12,6 @@ body {
 p {
   @apply leading-7 sm:text-justify;
 }
-
 .hyperlink {
   color: #0070f3;
   text-decoration: none;
@@ -24,10 +23,6 @@ p {
   }
 }
 
-.hover\:scale-102:hover {
-  --tw-scale-x: 1.02;
-  --tw-scale-y: 1.02;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.max-w {
+  max-width: 82.5rem;
 }
