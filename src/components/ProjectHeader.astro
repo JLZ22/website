@@ -8,24 +8,23 @@ interface Props {
 }
 
 const { title, dateRange, link } = Astro.props as Props;
-const WIDTH = 40;
 ---
 
 <div class="md:border-b py-1.5">
   <div
     class="relative flex flex-col md:flex-row md:items-end md:justify-between"
   >
-    <div class="flex items-end space-x-2">
+    <div class="flex items-center space-x-2">
       {
         link ? (
           <IconRef
             name="vscode-icons:folder-type-github-opened"
             link={link}
-            width={WIDTH}
+            width="40"
           />
         ) : (
           <div class="relative group transition-all ease-in-out hover:scale-105">
-          <IconRef name="fluent:folder-prohibited-28-filled" width={WIDTH} link="/restricted"/>
+          <IconRef name="fluent:folder-prohibited-28-filled" width="25" link="/restricted"/>
           <div class="absolute top-0 left-0 w-44 bg-slate-950 translate-y-10 p-1 rounded-md hidden group-hover:block opacity-85">
             public access restricted
           </div>
