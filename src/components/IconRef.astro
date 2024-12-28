@@ -11,7 +11,7 @@ interface props {
 const { name, link, width, target } = Astro.props as props;
 ---
 
-  <a href={link} target={target ? target : "_self"}>
+  <a href={link} target={target ? target : "_blank"}>
     <Icon
       name={name}
       width={width ? width : 40}
