@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import ResearchProject from "@components/ResearchProject.astro";
+// import ResearchProject from "@components/ResearchProject.astro";
+import Project from "@components/Project.astro";
 import { orderCollectionEntries } from "@resources/utils";
 
 const allResearch = await getCollection("researchProject");
@@ -12,6 +13,6 @@ orderCollectionEntries(allResearch, researchOrder);
 
 <Layout title="John's Research" section="Research">
   <div class="mt-10 space-y-10">
-    {allResearch.map((proj) => <ResearchProject researchProject={proj}/> )}
+    {allResearch.map((proj) => <Project project={proj}/> )}
   </div>
 </Layout>
