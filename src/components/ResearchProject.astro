@@ -24,9 +24,9 @@ const link = researchProject.data.link;
 const { Content } = await render(researchProject);
 ---
 
-<div>
+<div class="min-w-96">
   <ProjectHeader title={title} dateRange={dateRange} link={link} />
-  <div class="markdown-body border-l px-2 md:border-x-0 md:px-0 md:py-4">
+  <div class="markdown-body border-l mt-2 px-2 md:border-x-0 md:px-0 md:py-4">
     <Content
       components={{
         a: Link,
