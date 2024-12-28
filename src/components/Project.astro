@@ -27,13 +27,16 @@ const { Content } = await render(project);
 
 <div>
   <ProjectHeader title={title} dateRange={dateRange} link={link} />
-
-  <div class="mb-2">
-    [&nbsp;<span class="text-lg">
-      {technologies}
-    </span>&nbsp;]
-  </div>
-  <div class="markdown-body border-l px-2 md:border-x-0 md:px-0">
+  {
+    technologies ? (
+      <div class="mb-2">
+        [&nbsp;<span class="text-lg">
+          {technologies}
+        </span>&nbsp;]
+      </div>
+    ) : null
+  }
+  <div class="markdown-body border-l px-2 md:border-x-0 md:px-0 ">
     <Content
       components={{
         a: Link,
