@@ -10,7 +10,7 @@ body {
 }
 
 p {
-  @apply leading-7 sm:text-justify;
+  @apply leading-7;
 }
 .hyperlink {
   color: #0070f3;
