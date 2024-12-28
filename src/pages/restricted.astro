@@ -16,6 +16,10 @@ import Icon from "astro-iconify";
 </CenteredNoticeLayout>
 <script>
     document.getElementById("back-button")?.addEventListener("click", () => {
-        window.history.back();
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "/";
+        }
     });
 </script>

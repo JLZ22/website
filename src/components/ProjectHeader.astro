@@ -1,5 +1,5 @@
 ---
-import IconRef from "./IconRef.astro";
+import Icon from "astro-iconify";
 
 interface Props {
   title: string;
@@ -7,32 +7,36 @@ interface Props {
   link?: string;
 }
 
-const { title, dateRange, link } = Astro.props as Props;
+let { title, dateRange, link } = Astro.props as Props;
 ---
 
-<div class="md:border-b">
+<div class="md:border-b md:pb-1">
   <div
     class="relative flex flex-col space-y-1 md:flex-row md:items-end md:justify-between"
   >
-    <div class="flex items-center space-x-2">
-      {
-        link ? (
-          <IconRef
-            name="vscode-icons:folder-type-github-opened"
-            link={link}
-            width="35"
-          />
-        ) : (
-          <div class="relative group transition-all ease-in-out hover:scale-105">
-          <IconRef name="fluent:folder-prohibited-28-filled" width="30" link="/restricted"/>
-          <div class="absolute top-0 left-0 w-44 bg-slate-950 translate-y-10 p-1 rounded-md hidden group-hover:block opacity-85">
-            public access restricted
-          </div>
-          </div>
-        )
-      }
-      <span class="text-2xl">{title}</span>
-    </div>
+    <a href={link ? link : "/restricted"} target={link ? "_blank" : "_self"}>
+      <div
+        class={`flex items-center space-x-2 ${link ? "" : "hover:cursor-not-allowed"}`}
+      >
+        <div class="transition-all ease-in-out hover:scale-110 mb-1">
+          {
+            link ? (
+              <Icon name="vscode-icons:folder-type-github-opened" width="35" />
+            ) : (
+              <div class="group relative">
+                <Icon name="fluent:folder-prohibited-28-filled" width="30" />
+                <div class="absolute left-0 top-0 hidden w-44 translate-y-10 rounded-md bg-slate-950 p-1 opacity-85 group-hover:block">
+                  public access restricted
+                </div>
+              </div>
+            )
+          }
+        </div>
+        <span class={`text-2xl ${link ? "hover:text-blue-500" : ""}`}
+          >{title}</span
+        >
+      </div>
+    </a>
     <span class="text-lg italic">
       {dateRange}
     </span>
