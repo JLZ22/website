@@ -5,10 +5,10 @@ interface Props {
   title: string;
   dateRange: string;
   link?: string;
-  technologies?: string;
+  skills?: string;
 }
 
-let { title, dateRange, link, technologies } = Astro.props as Props;
+let { title, dateRange, link, skills } = Astro.props as Props;
 ---
 
 <div>
@@ -46,10 +46,10 @@ let { title, dateRange, link, technologies } = Astro.props as Props;
     </div>
   </div>
   {
-    technologies ? (
+    skills ? (
       <div class="mt-2">
         [&nbsp;<span class="text-lg">
-          {technologies}
+          {skills}
         </span>&nbsp;]
       </div>
     ) : null

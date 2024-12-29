@@ -14,13 +14,13 @@ import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 
 interface Props {
-  project: CollectionEntry<"project" | "researchProject">;
+  project: CollectionEntry<"project" | "researchProject" | "academicProject">;
 }
 
 const { project } = Astro.props as Props;
 const title = project.data.title;
 const dateRange = project.data.dateRange;
-const technologies = project.data.technologies;
+const skills = project.data.skills;
 const link = project.data.link;
 const { Content } = await render(project);
 ---
@@ -30,7 +30,7 @@ const { Content } = await render(project);
     title={title}
     dateRange={dateRange}
     link={link}
-    technologies={technologies}
+    skills={skills}
   />
   <div
     class="markdown-body my-2 flex flex-col gap-y-4 border-l px-2 md:border-x-0 md:px-0"

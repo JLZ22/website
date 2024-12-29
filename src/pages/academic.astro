@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Project from "@components/Project.astro";
+import { orderCollectionEntries } from "@resources/utils";
+
+const allProj = await getCollection("academicProject");
+const projOrder = [
+  "Pacman Projects",
+  "Web Server",
+  "Shell",
+  "C Compiler",
+  "Pascal Compiler",
+  "Pacman Gridworld",
+];
+
+orderCollectionEntries(allProj, projOrder);
+---
+
+<Layout title="John's Academic Projects" section="Academic Projects">
+  <div class="mt-10 space-y-10">
+    {allProj.map((proj) => <Project project={proj} />)}
+  </div>
+</Layout>

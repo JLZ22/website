@@ -9,11 +9,12 @@ const createProjCollection = (path: string) =>
       title: z.string(),
       dateRange: z.string(),
       link: z.string().optional(),
-      technologies: z.string().optional(),
+      skills: z.string().optional(),
     }),
   });
 
 const project = createProjCollection("./src/content/projects");
 const researchProject = createProjCollection("./src/content/research");
+const academicProject = createProjCollection("./src/content/academic")
 
-export const collections = { project, researchProject };
+export const collections = { project, researchProject, academicProject };
