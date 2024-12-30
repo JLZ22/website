@@ -18,7 +18,10 @@ orderCollectionEntries(allProj, projOrder);
 ---
 
 <Layout title="John's Academic Projects" section="Academic Projects">
-  <div class="mt-10 space-y-10">
+  <div class="pt-2">
+    Note: The projects that have restricted access are due to academic integrity policies at Purdue University. 
+  </div>
+  <div class="mt-5 space-y-10">
     {allProj.map((proj) => <Project project={proj} />)}
   </div>
 </Layout>
