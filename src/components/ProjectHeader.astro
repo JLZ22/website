@@ -19,25 +19,22 @@ let { title, dateRange, link, skills } = Astro.props as Props;
     >
       <a href={link ? link : "/restricted"} target={link ? "_blank" : "_self"}>
         <div
-          class={`flex items-center space-x-2 ${link ? "" : "hover:cursor-not-allowed"}`}
+          class={`flex items-center space-x-2 ${link ? "hover:scale-110 transition-all ease-in-out" : "hover:cursor-not-allowed"}`}
         >
-          <div class="transition-all ease-in-out hover:scale-110 mb-1">
+          <div class="mb-1 flex space-x-2">
             {
               link ? (
                 <Icon name="vscode-icons:folder-type-github-opened" width="35" />
               ) : (
                 <div class="group relative">
                   <Icon name="fluent:folder-prohibited-28-filled" width="30" />
-                  <div class="absolute left-0 top-0 hidden w-44 translate-y-10 rounded-md bg-slate-950 p-1 opacity-85 group-hover:block">
-                    public access restricted
-                  </div>
                 </div>
               )
             }
-          </div>
           <span class={`text-2xl ${link ? "hover:text-blue-500" : ""}`}
             >{title}</span
           >
+          </div>
         </div>
       </a>
       <span class="text-lg italic">
