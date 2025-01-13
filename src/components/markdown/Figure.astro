@@ -7,6 +7,8 @@ const { caption } = Astro.props;
 ---
 
 <figure class="text-xs text-center items-center flex flex-col font-sans">
-  <slot />
+  <div class="w-full max-w-lg">
+    <slot />
+  </div>
   <figcaption class="mt-1">{caption}</figcaption>
 </figure>
