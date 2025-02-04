@@ -5,7 +5,10 @@ import Project from "@components/Project.astro";
 import { orderCollectionEntries } from "@resources/utils";
 
 const allResearch = await getCollection("researchProject");
-const researchOrder = ["Assembly Digital Thread"];
+const researchOrder = [
+  "HyPE-LD", 
+  "Assembly Digital Thread"
+];
 
 orderCollectionEntries(allResearch, researchOrder); 
 ---
