@@ -3,6 +3,7 @@ import "@styles/global.css";
 import NavMenu from "@components/NavMenu.astro";
 import Hamburger from "@components/Hamburger.astro";
 import PurdueHackersWebring from "@components/PurdueHackersWebring.astro";
+import Copyright from "@components/Copyright.astro";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -67,10 +68,7 @@ const { title, section, heading } = Astro.props;
 
               <!-- Footer -->
               <footer class="p-2 mt-10 text-center">
-                © 2025 John Zeng
-                <a href="https://github.com/JLZ22/website" class="hyperlink"
-                  >Source</a
-                >
+                <Copyright/>
               </footer>
             </div>
           </div>
