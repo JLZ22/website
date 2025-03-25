@@ -1,12 +1,29 @@
----
-const currentYear = new Date().getFullYear();
-const startYear = 2024;
-const copyrightYearRange = startYear === currentYear ? `${startYear}` : `${startYear}-${currentYear}`;
----
-
 <div>
-    &copy; {copyrightYearRange} John Zeng |
-    <a href="https://github.com/JLZ22/website" class="hyperlink"
-      >Source</a
-    >
+  &copy; <span id="Year-Range"></span> John Zeng |
+  <a href="https://github.com/JLZ22/website" class="hyperlink">Source</a>
 </div>
+
+<script>
+const startYear = 2024;
+let elem = document.getElementById("Year-Range");
+
+function updateYear() {
+    const currentYear = new Date().getFullYear();
+    const copyrightYearRange = startYear === currentYear ? `${startYear}` : `${startYear}-${currentYear}`;
+    if (elem) elem.innerText = copyrightYearRange;
+}
+
+function scheduleNextUpdate() {
+    const now = new Date();
+    const nextYear = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0); // Next Jan 1st midnight
+    const timeUntilNextYear = nextYear.getTime() - now.getTime(); // Milliseconds until next year
+
+    setTimeout(() => {
+        updateYear();  // Update the year
+        scheduleNextUpdate(); // Reschedule for the next year
+    }, timeUntilNextYear);
+}
+
+updateYear(); // Initial update
+scheduleNextUpdate(); // Schedule the next update
+</script>
