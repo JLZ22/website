@@ -7,10 +7,8 @@ import Project from "@components/Project.astro";
 const allProjects = await getCollection("project");
 
 const projectOrder = [
+  "Listly",
   "Rugby Infinite Passing",
-  "Git Tutorial",
-  "Pascal Compiler",
-  "Pacman with Gridworld",
 ];
 
 orderCollectionEntries(allProjects, projectOrder); 
