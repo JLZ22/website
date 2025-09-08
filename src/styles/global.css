@@ -13,13 +13,16 @@ p {
   @apply leading-7;
 }
 .hyperlink {
-  color: #0070f3;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.15s ease;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.25em;
   &:hover {
-    text-decoration: underline;
-    color: #2f97ff;
+    color: #429cf6;
+    text-decoration-thickness: 0.12em;
+    font-weight: bold;
   }
 }
 
