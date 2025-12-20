@@ -1,0 +1,24 @@
+---
+title: ERD Grade Prediction
+dateRange: Sep 2025 - Dec 2025
+skills: TFIDF & Word Embeddings, Graph Similarity via Graph2Vec, Feature Engineering, Optuna, KNN 
+---
+import YoutubeEmbed from "@components/YoutubeEmbed.astro";
+
+Course: CS473 - Web Info and Search Management
+# Overview
+
+I led a team of five to develop a system that predicts student grades in Entity-Relationship Diagram (ERD) assignments based on their submission content. Given a training set of ERD submissions and their corresponding human-assigned grades, we were tasked with predicting the grades of ERD submissions without known grades. First, we vectorized the ERDs using a combination of hand-selected features and graph similarity metrics. Then, we trained and tuned a K-Nearest Neighbors (KNN) regression model to predict grades based on these vectors.
+
+# My Contributions
+
+- Implemented modular KNN regression model with K-tuning using a line-chart and dendogram. 
+- Implemented Approach 4 (Feature Engineering + Custom Similarity Function) 
+    - Extracts features like number of entities, relationships, attributes, and various ratios to create a feature vector for each ERD submission. 
+    - Predict grades based on weighted similarity of these feature vectors using KNN regression.
+- Implemented scripts for hyperparameter tuning using Optuna to optimize custom similarity function weights. 
+- Wrote the main runner script, combining all components to pre-process the input JSON's, encode the ERDs, and generate grade predictions.
+
+# Final Presentation:
+This presentation only includes Approach 3 (Graph Similarity + Text Encoding) and Approach 4 (Feature Engineering), which were the best performing.
+<YoutubeEmbed id="MrKxdO8XYqc" />
