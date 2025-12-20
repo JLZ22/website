@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         bg: "#18181b",
-        fg: "#c7d2fe",
+        fg: "#a3acd1",
       },
       screens: {
         'xxl': '1536px',
