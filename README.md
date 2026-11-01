@@ -15,4 +15,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## Acknowledgements 
 
-- 404 page designed by [Sonya He](https://www.sonyahe.com/).
+- 404 page designed by [Sonya He](https://www.linkedin.com/in/sonya-he-925237298/).
