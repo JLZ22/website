@@ -8,22 +8,11 @@ const startYear = 2024;
 let elem = document.getElementById("Year-Range");
 
 function updateYear() {
+    const elem = document.getElementById("Year-Range");
+    if (!elem) return;
     const currentYear = new Date().getFullYear();
-    const copyrightYearRange = startYear === currentYear ? `${startYear}` : `${startYear}-${currentYear}`;
-    if (elem) elem.innerText = copyrightYearRange;
+    elem.textContent = startYear === currentYear ? `${startYear}` : `${startYear}-${currentYear}`;
 }
 
-function scheduleNextUpdate() {
-    const now = new Date();
-    const nextYear = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0); // Next Jan 1st midnight
-    const timeUntilNextYear = nextYear.getTime() - now.getTime(); // Milliseconds until next year
-
-    setTimeout(() => {
-        updateYear();  // Update the year
-        scheduleNextUpdate(); // Reschedule for the next year
-    }, timeUntilNextYear);
-}
-
-updateYear(); // Initial update
-scheduleNextUpdate(); // Schedule the next update
+document.addEventListener("astro:page-load", updateYear);
 </script>
